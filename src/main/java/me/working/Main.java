@@ -48,7 +48,13 @@ public class Main {
         }
 
         // using fluent hc
-        String f = Request.Get("http://targethost/homepage")
+        Request.Get("http://www.google.com")
                 .execute().returnContent().asString();
+
+        // get body
+        CloseableHttpResponse yetAnotherResponse = httpclient.execute(new HttpGet("http://www.google.com"));
+        String bodyAsString = EntityUtils.toString(yetAnotherResponse.getEntity());
+
+        System.out.println();
     }
 }
